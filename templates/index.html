@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+
+	{% block title %}
+		Home - Amplifi
+	{% endblock %}
+
+	{% block content %}
+
+	{% include 'searchbar.html' %}
+
+		<div class="albums-list">
+			{% for album in albums %}
+				<div class="album">
+					<h3>{{album.albumname}}</h3>
+					<div class="song-list">
+						{% for song in album.songs %}
+							<div class="song">
+								<div class="song-info">
+									<h4>{{song.songname}}</h4>
+									<a type='submit' class="btn btn-primary" href="{{url_for('song_lyrics_page', song_id=song.id)}}">
+										<i class="fas fa-book fa-xs"></i>
+										Read Lyrics
+									</a>
+								</div>
+								<br>
+								<div class="add-to-playlist">
+									<form method="POST" action="{{url_for('add_to_playlist_page', song_id=song.id)}}" class="song-add">
+										<button type='submit' class="btn btn-success">
+											<i class="fas fa-plus fa-xs"></i>
+											Add to Playlist
+										</button>
+									</form>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	
+	{% endblock %}
+
+	{% block style %}
+		<style>
+			.albums-list{
+				display: flex;
+				flex-direction: column;
+				align-items:center;
+			}
+
+			.album{
+				width: 100%;
+				margin: 32px 0;
+			}
+
+			.song-list{
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.song{
+				width: 300px;
+				margin: 16px;
+				padding: 16px;
+				border: 1px solid #ccc;
+				border-radius: 8px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items:center;
+			}
+
+			.song-info{
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			.song-info h4{
+				margin: 0;
+			}
+
+			.song-info p{
+				margin: 0;
+			}
+
+			.add-to-playlist{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.add-to-playlist button{
+				padding: 8px 16px;
+				border-radius: 8px;
+				background-color: green;
+				color: white;
+				cursor: pointer;
+			}
+
+			.add-to-playlist button:hover{
+				background-color: blue;
+			}
+		</style>
+	{% endblock %}

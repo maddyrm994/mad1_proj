@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+	{% block title %}
+		Admin - Amplifi
+	{% endblock %}
+
+	{% block content %}
+		<h1>Admin Dashboard</h1>
+		<div class='heading'>
+			<h3 class='text-muted'>App Performance</h3>
+		</div>
+
+		<table class='table'>
+			<thead>
+				<tr>
+					<th>Total Users</th>
+					<th>Total Creators</th>
+					<th>Total Songs</th>
+					<th>Total Albums</th>
+					<th>Total Genres</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{users|length}}</td>
+					<td>{{creators_count}}</td>
+					<td>{{songs|length}}</td>
+					<td>{{albums|length}}</td>
+					<td>{{genres|length}}</td>
+
+				</tr>
+			</tbody>
+		</table>
+				
+	{% endblock %}
+
+	{% block style %}
+		<style>
+			.heading{
+				display:flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			h1{
+				text-align: center;
+			}
+
+		</style>
+	{% endblock %}

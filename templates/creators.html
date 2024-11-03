@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+	{% block title %}
+		Creator - Amplifi
+	{% endblock %}
+
+	{% block content %}
+		<h1>Creator</h1>
+		<div class='heading'>
+			<a class='btn btn-outline-success' href="{{url_for('upload_song_page')}}">
+				<i class='fas fa-plus fa-xs'></i>
+				Upload Song
+			</a>
+		</div>
+	{% endblock %}
+
+	{% block style %}
+		<style>
+			.heading{
+				display:flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			h1{
+				text-align: center;
+			}
+		</style>
+	{% endblock %}

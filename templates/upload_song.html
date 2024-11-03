@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+	{% block title %}
+		Upload Song - Amplifi
+	{% endblock %}
+
+	{% block content %}
+		<h1>Upload Song</h1>
+		<form method='post' class='form'>
+			<label for='name' class='form-label'>Name:
+				<input type='text' name='name' id='name' class='form-control' required />
+			</label>
+			<label for='name' class='form-label'>Album ID:
+				<input type='numeric' name='album_id' id='album_id' class='form-control' required />
+			</label>
+			<label for='name' class='form-label'>Song Duration:
+				<input type='text' name='songduration' id='songduration' class='form-control' placeholder='HH:MM:SS' required />
+			</label>
+			<label for='name' class='form-label'>Song Date of Creation:
+				<input type='text' name='songdateofcreation' id='songdateofcreation' class='form-control' placeholder='YYYY-MM-DD' required />
+			</label>
+			<div class='d-flex justify-content-center'><input type='submit' value='Upload Song' class='btn btn-outline-success'></div>
+		</form>
+	{% endblock %}
+
+	{% block style %}
+		<style>
+			.form{
+				margin-top: 32px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			h1{
+				margin-top: 64px;
+				text-align:center;
+			}
+		</style>
+	{% endblock %}

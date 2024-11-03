@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+	{% block title %}
+		My Playlist - Amplifi
+	{% endblock %}
+
+	{% block content %}
+		<h2>Your Playlist</h2>
+		<div class='heading'>
+			<h3 class='text-muted'>Number of Songs: {{playlists|length}}</h3>
+		</div>
+			<table class='table'>
+				<thead>
+					<tr>
+						<th>Song ID</th>
+						<th>Song Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for playlist in playlists %}
+						<tr>
+							<td>{{ playlist.song.id }}</td>
+							<td>{{ playlist.song.songname }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+	{% endblock %}
+
+	{% block style %}
+		<style>
+			.heading{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				justify-content: space-between;
+				margin-top: 5px;
+		</style>
+	{% endblock %}

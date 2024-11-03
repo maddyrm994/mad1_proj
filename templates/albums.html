@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+	{% block title %}
+		Albums - Amplifi
+	{% endblock %}
+
+	{% block content %}
+		<h1>Albums</h1>
+		<div class='heading'>
+			<h2 class='text-muted'>Albums</h2>
+			<a class='btn btn-outline-success' href="{{url_for('add_album_page')}}">
+				<i class='fas fa-plus fa-xs'></i>
+				Add Album
+			</a>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Album ID</th>
+					<th>Album Name</th>
+					<th>Album Genre</th>
+					<th>Album Artist</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for album in albums %}
+				<tr>
+					<td>{{album.id}}</td>
+					<td>{{album.albumname}}</td>
+					<td>{{album.albumgenre}}</td>						
+					<td>{{album.albumartist}}</td>
+					<td>
+						<a class='btn btn-success' href="{{url_for('open_album_page', id=album.id)}}">
+							<i class="fas fa-eye fa-xs"></i>
+							Open
+						</a>
+						<a class="btn btn-primary" href="{{url_for('edit_album_page', id=album.id)}}">
+							<i class="fas fa-edit fa-xs"></i>
+							Edit
+						</a>
+						<a class="btn btn-danger" href="{{url_for('delete_album_page', id=album.id)}}">
+							<i class="fas fa-trash fa-xs"></i>
+							Delete
+						</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endblock %}
+
+	{% block style %}
+		<style>
+			.heading{
+				display:flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			h1{
+				text-align: center;
+			}
+		</style>
+	{% endblock %}
