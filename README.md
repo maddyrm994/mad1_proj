@@ -1,4 +1,4 @@
-# Music Streaming Application
+# Music Streaming Application Version 1
 
 This project is a music streaming web application that allows users to play songs, read lyrics, create playlists, and lets creators upload their own music. The app is managed by an admin who oversees data and user interactions.
 
