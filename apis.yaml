@@ -1,0 +1,185 @@
+- title: User Registration
+  method: POST
+  endpoint: /register
+  description: Register a new user.
+  request:
+    - username: string (required)
+    - password: string (required)
+    - name: string
+  response:
+    - success: boolean
+    - message: string
+
+- title: User Login
+  method: POST
+  endpoint: /login
+  description: Log in an existing user.
+  request:
+    - username: string (required)
+    - password: string (required)
+  response:
+    - success: boolean
+    - message: string
+    - user_id: integer
+
+- title: Get User Profile
+  method: GET
+  endpoint: /profile
+  description: Retrieve the user's profile information.
+  response:
+    - success: boolean
+    - user:
+      - id: integer
+      - username: string
+      - name: string
+
+- title: Update User Profile
+  method: POST
+  endpoint: /profile
+  description: Update the user's profile information.
+  request:
+    - username: string
+    - name: string
+    - password: string (required)
+    - cpassword: string (required)
+  response:
+    - success: boolean
+    - message: string
+
+- title: Get Albums
+  method: GET
+  endpoint: /albums
+  description: Retrieve a list of albums.
+  response:
+    - success: boolean
+    - user:
+      - id: integer
+      - username: string
+      - name: string
+    - albums:
+      - id: integer
+      - albumname: string
+      - albumgenre: string
+      - albumartist: string
+      - albumnoofsongs: integer
+
+- title: Get Album Details
+  method: GET
+  endpoint: /album/{id}/open
+  description: Retrieve details of a specific album.
+  response:
+    - success: boolean
+    - user:
+      - id: integer
+      - username: string
+      - name: string
+    - album:
+      - id: integer
+      - albumname: string
+      - albumgenre: string
+      - albumartist: string
+      - albumnoofsongs: integer
+      - songs:
+        - id: integer
+        - songname: string
+        - songduration: string
+        - songdateofcreation: string
+
+- title: Add Song to Playlist
+  method: POST
+  endpoint: /playlist/{song_id}/add
+  description: Add a song to the user's playlist.
+  response:
+    - success: boolean
+    - message: string
+
+- title: Get User Playlists
+  method: GET
+  endpoint: /playlist
+  description: Retrieve the user's playlists.
+  response:
+    - success: boolean
+    - user:
+      - id: integer
+      - username: string
+      - name: string
+    - playlists:
+      - songid: integer
+      - song:
+        - id: integer
+        - songname: string
+        - songduration: string
+        - songdateofcreation: string
+
+- title: Admin Features
+  method: GET
+  endpoint: /admin
+  description: Access admin features (restricted to admin users).
+  response:
+    - success: boolean
+    - user:
+      - id: integer
+      - username: string
+      - name: string
+    - users:
+      - id: integer
+      - username: string
+      - name: string
+      - isadmin: boolean
+      - iscreator: boolean
+    - songs:
+      - id: integer
+      - songname: string
+      - songduration: string
+      - songdateofcreation: string
+    - albums:
+      - id: integer
+      - albumname: string
+      - albumgenre: string
+      - albumartist: string
+      - albumnoofsongs: integer
+    - creators_count: integer
+    - genres:
+      - id: integer
+      - genrename: string
+
+- title: Creator Features
+  method: GET
+  endpoint: /creator
+  description: Access creator features (restricted to creator users).
+  response:
+    - success: boolean
+    - user:
+      - id: integer
+      - username: string
+      - name: string
+
+- title: Upload Song (Creator)
+  method: GET
+  endpoint: /creator/upload
+  description: Access the song upload page for creators.
+  response:
+    - success: boolean
+    - user:
+      - id: integer
+      - username: string
+      - name: string
+    - albums:
+      - id: integer
+      - albumname: string
+      - albumgenre: string
+      - albumartist: string
+      - albumnoofsongs: integer
+
+- title: Upload Song (Creator)
+  method: POST
+  endpoint: /creator/upload
+  description: Upload a new song to the music library (restricted to creator users).
+  request:
+    - name: string (required)
+    - songduration: string (required)
+    - songdateofcreation: string (required)
+    - album_id: integer (required)
+  response:
+    - success: boolean
+    - message: string
