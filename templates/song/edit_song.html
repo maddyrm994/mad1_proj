@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+	{% block title %}
+		Edit Song {{song.songname}} - Amplifi
+	{% endblock %}
+
+	{% block content %}
+		<h1>Edit Song {{song.songname}}</h1>
+		<form method='post' class='form'>
+			<label for='name' class='form-label'>Name:
+				<input type='text' name='name' id='name' class='form-control' required value='{{song.songname}}' />
+			</label>
+			<label for='name' class='form-label'>Album ID:
+				<input type='text' name='album_id' id='album_id' class='form-control' required value='{{song.album_id}}' />
+			</label>
+			<label for='name' class='form-label'>Song Duration:
+				<input type='text' name='songduration' id='songduration' class='form-control' required value='{{song.songduration}}' />
+			</label>
+			<label for='name' class='form-label'>Song Date of Creation:
+				<input type='text' name='songdateofcreation' id='songdateofcreation' class='form-control' required value='{{song.songdateofcreation}}' />
+			</label>
+			<input type='submit' value='Edit Song' class='btn btn-outline-success'>
+		</form>
+	{% endblock %}
+
+	{% block style %}
+		<style>
+			.form{
+				margin-top: 32px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			h1{
+				margin-top: 64px;
+				text-align:center;
+			}
+		</style>
+	{% endblock %}

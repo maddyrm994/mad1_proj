@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+	{% block title %}
+		Song {{ song.songname }} - Amplifi
+	{% endblock %}
+
+	{% block content %}
+		<div class="heading">
+			<h1>{{ song.songname }}</h1>
+			<a id='toggleLyrics' type='submit' class="btn btn-primary">
+				<i class="fas fa-book fa-xs"></i>
+				Read Lyrics
+			</a>
+		</div>
+		<br><br>
+		<div id="lyricsContent" class="content">
+			<p>
+			{% if song.lyrics %}
+				{{ song.lyrics }}
+			{% else %}
+				Lyrics:<br><br><br>
+				abcde<br>
+				fghijk<br>
+				lmnop<br>
+				qrstu<br>
+				vwxyz<br>
+			{% endif %}
+			</p>	
+		</div>
+
+	{% endblock %}
+
+	{% block style %}
+		<style>
+			.heading {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+        			}
+
+			h1 {
+				text-align: center;
+        			}
+
+			.content {            
+				font-size: 20px;
+            				padding: 0 18px;
+            				display: none;
+            				overflow: hidden;
+        			}
+    		</style>
+	{% endblock %}
+
+	{% block script %}
+		<script>
+			document.getElementById("toggleLyrics").addEventListener("click", function () {
+				var lyricsContent = document.getElementById("lyricsContent");
+				if (lyricsContent.style.display === "block") {
+					lyricsContent.style.display = "none";
+				} else {
+				lyricsContent.style.display = "block";
+				}
+			});
+		</script>
+	{% endblock %}
